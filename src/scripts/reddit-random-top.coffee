@@ -18,7 +18,7 @@ module.exports = (robot) ->
     reddit msg, msg.match[1]?.trim()
 
 reddit = (msg, subreddit) ->
-  url = if subreddit? then "http://www.reddit.com/r/#{subreddit}/top.json" else "http://www.reddit.com/top.json"
+  url = if subreddit? then "http://www.reddit.com/r/#{subreddit}/top.json?t=year" else "http://www.reddit.com/top.json?t=year"
   msg
     .http(url)
       .get() (err, res, body) ->
