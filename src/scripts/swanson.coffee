@@ -14,7 +14,7 @@
 #   danielmurphy
 
 module.exports = (robot) ->
-  robot.respond /swanson me$/i, (msg) ->
+  robot.respond /ron fucking swanson/i, (msg) ->
     images = [
       "http://i.imgur.com/kW0f7.jpg",
       "http://i.imgur.com/vw9gZ.jpg",
