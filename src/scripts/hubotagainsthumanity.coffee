@@ -16,7 +16,7 @@
 #   Jonny Campbell (@jonnycampbell)
 
 questions = [
-"Air Canada guidelines now prohibit ____ on airplanes.",
+ "Air Canada guidelines now prohibit ____ on airplanes.",
  "O Canada, we stand on guard for ____.",
  "CTV presents ____, the story of ____.",
  "In an attempt to reach a wider audience, the Royal Ontario Museum has opened an interactive exhibit on ____.",
