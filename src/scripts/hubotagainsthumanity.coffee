@@ -189,10 +189,10 @@ questions = [
  "Next on ESPN2, the World Series of ____.",
  "Step 1: ____. Step 2: ____. Step 3: Profit.",
  "The Smithsonian Museum of Natural History has just opened an exhibit on ____."
- ]
+]
 
 answers = [
-"Poutine.",
+ "Poutine.",
  "Newfies.",
  "The Official Languages Act. La Loi sur les langues officielles.",
  "Terry Fox's prosthetic leg.",
@@ -935,12 +935,12 @@ answers = [
  "The Rapture.",
  "Road head.",
  "Passive-aggressive Post-it notes."
- ]
+]
 
 module.exports = (robot) ->
-  robot.hear /card(?: me)?(?: )(\d+)?/i, (msg) ->
+  robot.respond /card(?: me)?(?: )(\d+)?/i, (msg) ->
     count = if msg.match[1]? then parseInt(msg.match[1], 10) else 1
     msg.send msg.random answers for i in [1..count]
 
-  robot.hear /q(?:uestion)? card/i, (msg) ->
+  robot.respond /q(?:uestion)? card/i, (msg) ->
     msg.send msg.random questions
