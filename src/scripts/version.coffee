@@ -14,7 +14,7 @@
 #   artfuldodger
 
 module.exports = (robot) ->
-  robot.respond /version me ( .+)$/i, (msg) ->
+  robot.respond /version me ( .+)/i, (msg) ->
     parseShowcode msg, msg.match[1]?.trim()
 
 parseShowcode = (msg, showcode) ->
