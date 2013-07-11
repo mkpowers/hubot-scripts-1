@@ -14,7 +14,7 @@
 #   artfuldodger
 
 module.exports = (robot) ->
-  robot.respond /version me ( .+)/i, (msg) ->
+  robot.respond /version me (.*)/i, (msg) ->
     parseShowcode msg, msg.match[1]?.trim()
 
 parseShowcode = (msg, showcode) ->
@@ -27,7 +27,7 @@ parseShowcode = (msg, showcode) ->
 
 
         androidVersion = responseJson.current_android_version
-        iphoneVersion = responseJson.currrent_iphone_version
+        iphoneVersion = responseJson.current_iphone_version
         
         msg.send "iOS: #{iphoneVersion} | Android: #{androidVersion}"
 
