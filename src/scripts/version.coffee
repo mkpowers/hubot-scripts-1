@@ -8,10 +8,10 @@
 #   None
 #
 # Commands:
-#   hubot a reddit <subreddit> - A random top (today) post from the specified subreddit. Tries to find a picture if possible
+#   hubot version me <shortcode> - displays the submitted versions of a Follow Me app
 #
 # Author:
-#   artfuldodger
+#   mkpowers
 
 module.exports = (robot) ->
   robot.respond /version me (.*)/i, (msg) ->

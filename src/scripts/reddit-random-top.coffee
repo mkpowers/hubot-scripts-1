@@ -18,7 +18,7 @@ module.exports = (robot) ->
     reddit msg, msg.match[1]?.trim()
 
 reddit = (msg, subreddit) ->
-  url = if subreddit? then "http://www.reddit.com/r/#{subreddit}/top.json?t=year" else "http://www.reddit.com/top.json?t=year"
+  url = if subreddit? then "http://www.reddit.com/r/#{subreddit}.json?t=all" else "http://www.reddit.com/top.json?t=year"
   msg
     .http(url)
       .get() (err, res, body) ->
@@ -57,4 +57,7 @@ reddit = (msg, subreddit) ->
 
 getPost = (posts) ->
   random = Math.round(Math.random() * posts.data.children.length)
-  posts.data.children[random]?.data
+  if posts.data.children[random]?.over_18
+  	getPost(posts)
+  else
+  	posts.data.children[random]?.data
