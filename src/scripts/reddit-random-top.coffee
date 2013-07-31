@@ -57,7 +57,7 @@ reddit = (msg, subreddit) ->
 
 getPost = (posts) ->
   random = Math.round(Math.random() * posts.data.children.length)
-  if posts.data.children[random]?.over_18
+  if posts.data.children[random]?.over_18 or posts.data.children[random]?.ups < posts.data.children[random]?.downs
   	getPost(posts)
   else
   	posts.data.children[random]?.data
