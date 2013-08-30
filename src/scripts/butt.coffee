@@ -70,7 +70,7 @@ module.exports = (robot) ->
       uniques = words.unique
   
     # how many butts?
-  	  numToButt = Math.floor(size / replaceFreqDenom) + 1
+      numToButt = Math.floor(size / replaceFreqDenom) + 1
 
       # which will we butt?
       toButt = []
@@ -81,7 +81,7 @@ module.exports = (robot) ->
       # perform buttification
   
       # reform string
-  	  words.join(' ')
+      words.join(' ')
   
-  	  butted = words.replace word, MEME for word in toButt
-      msg.send butted	
+      butted = words.replace word, MEME for word in toButt
+      msg.send butted
