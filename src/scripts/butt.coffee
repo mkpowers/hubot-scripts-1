@@ -194,7 +194,6 @@ whichToButt (uniques, numToButt) ->
   output
 
 
-
 # main script runner
 buttify (str, replaceFreqDenom) ->
   words = str.split(' ')
@@ -207,9 +206,11 @@ buttify (str, replaceFreqDenom) ->
   toButt = whichToButt(uniques, numToButt)
 
   # perform buttification
-
+  
   # reform string
   words.join(' ')
+  
+  words.replace word, MEME for word in toButt
 
 # message must contain at least some word-like tokens that we can butt
 isStringButtable (str) ->
