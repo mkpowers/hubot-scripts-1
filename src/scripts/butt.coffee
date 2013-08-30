@@ -46,181 +46,6 @@ Array::unique = ->
   output[@[key]] = @[key] for key in [0...@length]
   value for key, value of output
 
-# list of stopwords to ignore for butting
-stopwords = [
-  "a",
-  "about",
-  "above",
-  "absent",
-  "across",
-  "after",
-  "against",
-  "all",
-  "along",
-  "among",
-  "an",
-  "and",
-  "are",
-  "around",
-  "as",
-  "at",
-  "atop",
-  "be",
-  "before",
-  "behind",
-  "below",
-  "beneath",
-  "beside",
-  "besides",
-  "between",
-  "beyond",
-  "but",
-  "by",
-  "can",
-  "could",
-  "do",
-  "down",
-  "during",
-  "each",
-  "except",
-  "for",
-  "from",
-  "had",
-  "has",
-  "have",
-  "he",
-  "he'll",
-  "her",
-  "him",
-  "his",
-  "how",
-  "I",
-  "I'm",
-  "if",
-  "in",
-  "inside",
-  "into",
-  "is",
-  "it",
-  "it's",
-  "like",
-  "many",
-  "might",
-  "must",
-  "near",
-  "next",
-  "not",
-  "of",
-  "off",
-  "on",
-  "one",
-  "onto",
-  "opposite",
-  "or",
-  "other",
-  "out",
-  "outside",
-  "over",
-  "past",
-  "per",
-  "plus",
-  "round",
-  "said",
-  "she",
-  "should",
-  "since",
-  "so",
-  "some",
-  "than",
-  "that",
-  "the",
-  "their",
-  "them",
-  "then",
-  "there",
-  "these",
-  "they",
-  "they'll",
-  "they're",
-  "this",
-  "through",
-  "till",
-  "times",
-  "to",
-  "toward",
-  "towards",
-  "under",
-  "unlike",
-  "until",
-  "up",
-  "upon",
-  "via",
-  "was",
-  "we",
-  "we'll",
-  "we're",
-  "were",
-  "what",
-  "when",
-  "which",
-  "will",
-  "with",
-  "within",
-  "without",
-  "word",
-  "won't",
-  "worth",
-  "would",
-  "you",
-  "you'll",
-  "you're",
-  "your"
-]
-
-# -------------------------------------------------------------------------------------------------
-# helper methods
-
-# figure out how many uniques
-# if the script is triggered, it will always butt at least one word
-
-# pick words to butt
-whichToButt (uniques, numToButt) ->
-  output = []
-  while output.size() < numToButt
-    nextButtIdx = Math.floor(Math.random * uniques.size())
-    output = (output.concat uniques[nextButtIdx]).unique
-  output
-
-
-# main script runner
-buttify (str, replaceFreqDenom) ->
-  words = str.split(' ')
-  uniques = words.unique
-  
-  # how many butts?
-  numToButt = Math.floor(size / replaceFreqDenom) + 1
-
-  # which will we butt?
-  toButt = whichToButt(uniques, numToButt)
-
-  # perform buttification
-  
-  # reform string
-  words.join(' ')
-  
-  words.replace word, MEME for word in toButt
-
-# message must contain at least some word-like tokens that we can butt
-isStringButtable (str) ->
-  (str.search /[a-zA-Z]+/gi ) > 0
-
-# determine whether we are to butt (check trigger and validate input)
-toButtOrNotToButt (str, triggerFreqDenom) ->
-  if (Math.floor(Math.random() * triggerFreqDenom) + 1) == 1
-    isStringButtable(str)
-  else
-    false
-
 # -------------------------------------------------------------------------------------------------
 # the main Hubot method
 
@@ -240,6 +65,23 @@ module.exports = (robot) ->
   # match on all incoming strings
   robot.hear /(.+)/i, (msg) ->
     original = escape(msg.match[1]).trim.toLowerCase()
-    if toButtOrNotToButt(original, frequencyDenom)
-      butted = buttify(original, replaceDenom)
+    if (Math.floor(Math.random() * triggerFreqDenom) + 1) == 1 and (original.search /[a-zA-Z]+/gi ) > 0
+      words = original.split(' ')
+      uniques = words.unique
+  
+    # how many butts?
+  	  numToButt = Math.floor(size / replaceFreqDenom) + 1
+
+      # which will we butt?
+      toButt = []
+      while toButt.size() < numToButt
+        nextButtIdx = Math.floor(Math.random * uniques.size())
+        toButt = (toButt.concat uniques[nextButtIdx]).unique
+
+      # perform buttification
+  
+      # reform string
+  	  words.join(' ')
+  
+  	  butted = words.replace word, MEME for word in toButt
       msg.send butted	
