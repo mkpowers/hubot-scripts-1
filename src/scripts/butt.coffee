@@ -200,7 +200,7 @@ buttify (str, replaceFreqDenom) ->
   uniques = words.unique
   
   # how many butts?
-  numToButt = howManyButts(uniques.size(), replaceFreqDenom)
+  numToButt = Math.floor(size / replaceFreqDenom) + 1
 
   # which will we butt?
   toButt = whichToButt(uniques, numToButt)
