@@ -31,5 +31,7 @@ module.exports = (robot) ->
       "http://i.imgur.com/6bRfJPJ.gif",
       "http://i.imgur.com/Xv01pz9.gif",
       "http://i.imgur.com/M9i1kuw.gif",
-      "http://i.imgur.com/C0p1MKW.gif"]
+      "http://i.imgur.com/C0p1MKW.gif",
+      "http://31.media.tumblr.com/tumblr_m2i5c3Jhrl1qzb9ygo1_500.png",
+      "http://24.media.tumblr.com/tumblr_m2i5c3Jhrl1qzb9ygo2_500.png"]
     msg.send msg.random images
