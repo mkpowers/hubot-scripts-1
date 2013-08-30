@@ -182,8 +182,6 @@ stopwords = [
 
 # figure out how many uniques
 # if the script is triggered, it will always butt at least one word
-howManyButts (size, replaceFreqDenom) ->
-  Math.floor(size / replaceFreqDenom) + 1
 
 # pick words to butt
 whichToButt (uniques, numToButt) ->
