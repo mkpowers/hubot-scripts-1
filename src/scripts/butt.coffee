@@ -68,12 +68,12 @@ module.exports = (robot) ->
   # match on all incoming strings
   robot.hear /(.+)/i, (msg) ->
     original = escape(msg.match[1]).trim
-    if (Math.floor(Math.random() * triggerFreqDenom) + 1) == 1 and (original.search /[a-zA-Z]+/gi ) > 0
+    if (Math.floor(Math.random() * frequencyDenom) + 1) == 1 and (original.search /[a-zA-Z]+/gi ) > 0
       words = original.split(' ')
       uniques = words.unique
   
     # how many butts?
-      numToButt = Math.floor(size / replaceFreqDenom) + 1
+      numToButt = Math.floor(size / replaceDenom) + 1
 
       # which will we butt?
       toButt = []
