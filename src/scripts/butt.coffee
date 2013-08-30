@@ -52,6 +52,9 @@ Array::unique = ->
 module.exports = (robot) ->
 
   # get env vars read into memory
+  frequencyDenom = 0
+  replaceDenom = 0
+  
   if triggerEnv
     frequencyDenom = parseInt(trigger_env)
   else
