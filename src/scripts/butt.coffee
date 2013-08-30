@@ -56,7 +56,7 @@ module.exports = (robot) ->
   replaceDenom = 0
   
   if triggerEnv
-    frequencyDenom = parseInt(trigger_env)
+    frequencyDenom = parseInt(triggerEnv)
   else
     frequencyDenom = DEFAULT_TRIGGER_FREQ_DENOM
 
