@@ -14,5 +14,5 @@
 #   mkpowers
 
 module.exports = (robot) ->
-  robot.hear /the wo+rst/i, (msg) ->
+  robot.hear /the woo+rst/i, (msg) ->
     msg.send "http://i.imgur.com/JZMPU2o.gif"
