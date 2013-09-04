@@ -40,7 +40,7 @@ reddit = (msg, subreddit) ->
           msg.send "While that subreddit exists, there does not seem to be anything there."
           return
 
-        post = getPost(posts)
+        post = getPost(posts, msg)
 
         tries_to_find_picture = 0
 
@@ -50,14 +50,13 @@ reddit = (msg, subreddit) ->
         
         # Send pictures with the url on one line so Campfire displays it as an image
         if post?.domain == 'i.imgur.com'
-          msg.send "#{post.title} - http://www.reddit.com#{post.permalink}"
           msg.send post.url
         else
-          msg.send "#{post.title} - #{post.url} - http://www.reddit.com#{post.permalink}"
+          msg.send "Try a subreddit with pictures in it, dumbass"
 
-getPost = (posts) ->
-  random = Math.round(Math.random() * posts.data.children.length)
-  if posts.data.children[random]?.over_18 or posts.data.children[random]?.ups < posts.data.children[random]?.downs
-  	getPost(posts)
+getPost = (posts, msg) ->
+  post = msg.random posts.data.children
+  if post?.over_18 or post?.ups < post?.downs
+  	getPost(posts, msg)
   else
-  	posts.data.children[random]?.data
+  	post?.data
