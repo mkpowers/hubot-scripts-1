@@ -44,7 +44,7 @@ reddit = (msg, subreddit) ->
 
         tries_to_find_picture = 0
 
-        while post?.domain != "i.imgur.com" && tries_to_find_picture < 30
+        while (post?.domain != "i.imgur.com" or /flickr/.test(post?.domain) == false) && tries_to_find_picture < 30
           post = getPost(posts)
           tries_to_find_picture++
         
