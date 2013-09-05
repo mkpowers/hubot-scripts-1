@@ -40,7 +40,7 @@ reddit = (msg, subreddit) ->
           msg.send "While that subreddit exists, there does not seem to be anything there."
           return
 
-        post = getPost(posts, msg)
+        post = getPost(posts)
 
         tries_to_find_picture = 0
 
@@ -54,8 +54,10 @@ reddit = (msg, subreddit) ->
         else
           msg.send "Try a subreddit with pictures in it, dumbass"
 
-getPost = (posts, msg) ->
-  post = msg.random posts.data.children
+getPost = (posts) ->
+  max = posts.data.children.length
+  min = 0
+  post = posts.data.children[Math.floor(Math.random() * (max - min + 1)) + min]
   if post?.over_18 or post?.ups < post?.downs
   	getPost(posts, msg)
   else
