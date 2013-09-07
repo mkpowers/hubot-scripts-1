@@ -13,6 +13,8 @@
 # Author:
 #   artfuldodger
 
+String::endsWith = (suffix) -> return this.slice(-suffix.length) == suffix
+
 module.exports = (robot) ->
   robot.respond /a reddit( .+)*/i, (msg) ->
     reddit msg, msg.match[1]?.trim()
@@ -44,12 +46,12 @@ reddit = (msg, subreddit) ->
 
         tries_to_find_picture = 0
 
-        while (post?.domain != "i.imgur.com" or /flickr/.test(post?.domain) == false) && tries_to_find_picture < 30
+        while (post?.url.endsWith(".png") != true or post?.url.endsWith(".jpg") != true or post?.url.endsWith(".gif") != true) && tries_to_find_picture < 50
           post = getPost(posts)
           tries_to_find_picture++
         
         # Send pictures with the url on one line so Campfire displays it as an image
-        if post?.domain == 'i.imgur.com'
+        if post?.url.endsWith(".png") or post?.url.endsWith(".jpg") or post.url.endsWith(".gif")
           msg.send post.url
         else
           msg.send "Try a subreddit with pictures in it, dumbass"
