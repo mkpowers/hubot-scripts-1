@@ -52,9 +52,10 @@ reddit = (msg, subreddit) ->
         
         # Send pictures with the url on one line so Campfire displays it as an image
         if post?.url.endsWith(".png") or post?.url.endsWith(".jpg") or post.url.endsWith(".gif")
+          msg.send "#{post.title} - http://www.reddit.com#{post.permalink}"
           msg.send post.url
         else
-          msg.send "Try a subreddit with pictures in it, dumbass"
+          msg.send "#{post.title} - #{post.url}"
 
 getPost = (posts) ->
   max = posts.data.children.length
