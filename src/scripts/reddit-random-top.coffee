@@ -20,7 +20,7 @@ module.exports = (robot) ->
     reddit msg, msg.match[1]?.trim()
 
 reddit = (msg, subreddit) ->
-  url = if subreddit? then "http://www.reddit.com/r/#{subreddit}.json?t=all" else "http://www.reddit.com/top.json?t=year"
+  url = if subreddit? then "http://www.reddit.com/r/#{subreddit}.json?t=all&limit=100" else "http://www.reddit.com/top.json?t=year"
   msg
     .http(url)
       .get() (err, res, body) ->
@@ -51,7 +51,7 @@ reddit = (msg, subreddit) ->
           tries_to_find_picture++
         
         # Send pictures with the url on one line so Campfire displays it as an image
-        if post?.url.endsWith(".png") or post?.url.endsWith(".jpg") or post.url.endsWith(".gif")
+        if post?.url.endsWith(".png") or post?.url.endsWith(".jpg") or post?.url.endsWith(".gif")
           msg.send "#{post.title} - http://www.reddit.com#{post.permalink}"
           msg.send post.url
         else
