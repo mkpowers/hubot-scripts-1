@@ -52,5 +52,5 @@ crap = [
 
 module.exports = (robot) ->
   robot.respond /what should I eat/i, (msg) ->
-    sentence = msg.random adjectives + msg.random foods + msg.random crap
+    sentence = "You should eat some #{msg.random adjectives} #{msg.random foods} #{msg.random crap}"
     msg.send sentence
