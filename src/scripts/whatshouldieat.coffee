@@ -14,12 +14,12 @@
 #   mkpowers
   
 adjectives = [
-  "Stunning",
-  "Excellent",
-  "Perfect",
-  "Beautiful",
-  "Amazing",
-  "Outstanding"
+  "stunning",
+  "excellent",
+  "perfect",
+  "beautiful",
+  "amazing",
+  "outstanding"
   ]
   
 foods = [
